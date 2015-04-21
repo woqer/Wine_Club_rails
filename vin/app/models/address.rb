@@ -11,8 +11,6 @@ class Address < ActiveRecord::Base
   validate :state, length: { minimum: 2 }, exclusion: { in: %w(Alabama Arkansas Delaware Kentuky Massachusetts Mississippi Oklahoma Pensilvania South Dakota Utah) }
   validate :zip, length: 5
 
-  validates :status, inclusion: { in: %w(delivered cancelled scheduled) }
-
   # Overriding original renderin of model to json
   def serializable_hash(options={})
     super(options.merge({ except: [:updated_at, :created_at] }))

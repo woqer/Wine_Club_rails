@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Don't push config/secrets.yml to github...
+/config/secrets.yml
+
+# old DB backup...
+/db/data.yml

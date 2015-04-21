@@ -38,6 +38,11 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pry', group: [:development, :test]
-gem 'json', group: [:development, :test]
-gem 'rest-client', group: [:development, :test]
+group :test, :development do
+  gem 'pry'
+  gem 'json'
+  gem 'rest-client'
+end
+
+# For easy dumping and loading database, even for migrating to a different db backend 
+gem 'yaml_db'
