@@ -1,0 +1,2 @@
+module Vin::SubsHelper
+end
