@@ -3,6 +3,8 @@ Final project of CS445 Spring2015 at IIT
 
 * Rails app as an API provider using JSON
 * API implemented http://cs.iit.edu/~virgil/cs445/mail.spring2015/project-api.html
+* Ruby version: 1.9.3
+* Database creation and initialization: type `rake db:create`
 
 ### Client
 Client on test folder `vin/test/vin-client.rb`. Provides a RestClient with all methods needed to test the use cases defined in the API
