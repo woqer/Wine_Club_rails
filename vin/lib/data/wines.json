@@ -1,7 +1,0 @@
-{
-  "wines":
-  [
-    {"name" : "Marques de Caceres Verdejo", "color" : "W"},
-    {"name" : "Vega Sicilia Unico", "color" : "R"}
-  ]
-}
