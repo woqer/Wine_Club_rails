@@ -1,21 +1,6 @@
 require 'test_helper'
-require "pry"
 
 class Vin::NotesControllerTest < ActionController::TestCase
-
-  def initialize(options={})
-    super(options)
-    @sub_json = read_sub
-  end
-
-  def read_data example
-    file = File.read(File.join(Rails.root, "lib","data", example))
-    JSON.parse(file)
-  end
-
-  def read_sub example="note.json"
-    read_data example
-  end
 
   test "notes index" do
     get :index, sub_id: 1, shipment_id: 1
@@ -23,7 +8,7 @@ class Vin::NotesControllerTest < ActionController::TestCase
   end
 
   test "notes create" do
-    post :create, sub_id: 1, shipment_id: 1, @sub_json
+    post :create, sub_id: 1, shipment_id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
     assert_response :success
   end
 
@@ -33,7 +18,7 @@ class Vin::NotesControllerTest < ActionController::TestCase
   end
 
   test "notes update" do
-    put :update, id: 1, @sub_json
+    put :update, id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
     assert_response :success
   end
 

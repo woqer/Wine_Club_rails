@@ -1,5 +1,4 @@
 require 'test_helper'
-require "pry"
 
 class Vin::ReceiptControllerTest < ActionController::TestCase
 

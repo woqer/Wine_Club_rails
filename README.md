@@ -18,4 +18,10 @@ Server on root folder `vin`
 * Type `rails s` to start server at port 3000
 * Database creation and initialization: type `rake db:create`
 
+
+### Testing
+To run unit tests, just type `rake test` on the root folder
+* Test results will be printed in the terminal
+* It will generate the `/coverage` folder, open `index.html` using a web browser to see coverage results
+
 Author: [Wilfrido Vidana](wvidanas@gmail.com)

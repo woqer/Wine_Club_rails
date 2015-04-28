@@ -22,5 +22,6 @@
 /db/data.yml
 
 # coverage results
-/coverage/
+/coverage
 /coverage/*
+
