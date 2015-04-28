@@ -18,14 +18,15 @@ class Subscriber < ActiveRecord::Base
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, uniqueness: { case_sensitive: false }
 
   # Scopes
-  scope :by_email, lambda { |email| where('email like ?', "%#{email}") }
+  scope :by_email, ->(email) { where('email like ?', "%#{email}%") }
 
   # ClassMethods
-  def self.search(email)
-    if email.blank?
+  def self.search(query)
+    if query.blank?
       self.all
     else
-      by_email email
+      # by_email query
+      where("name like ? email like ? phone like ?", query)
     end
   end
 
@@ -35,6 +36,16 @@ class Subscriber < ActiveRecord::Base
     email_ary[0].delete!(".+")
     email_ary.join("@")
   end
+
+  # def search(query)
+  #   # sub = { wines: self.packages.uniq_wines, notes: self.packages.pluck(:note), shipments: self.shipments }
+  #   if query.blank?
+  #     self
+  #   else
+  #     q = "%#{query}%"
+  #     where("wine.name like ? OR wine.color like ? OR package.note like ?", q, q, q)
+  #   end
+  # end
 
   # Overriding original renderin of model to json
   def serializable_hash(options={})

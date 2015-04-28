@@ -20,3 +20,7 @@
 
 # old DB backup...
 /db/data.yml
+
+# coverage results
+/coverage/
+/coverage/*

@@ -12,9 +12,21 @@ class Shipment < ActiveRecord::Base
   # validates :status, format: { with: /\Adelivered\Z|\Acancelled\Z|\Ascheduled\Z/ }
   validates :status, inclusion: { in: %w(delivered cancelled scheduled) }
 
+  # Scopes
+  scope :for_subscriber, ->(subscriber) { where(subscriber: subscriber) }
+
   # Class methods
   def self.selection_month
     @relation.map { |s| s.selection_month }
+  end
+
+  def self.search(query)
+    if query.blank?
+      self.all
+    else
+      q = "%#{query}%"
+      where("status like ? date like ?", q, q)
+    end
   end
 
   # Methods

@@ -44,8 +44,12 @@ respond_to :json
   # GET /vin/sub/:uid/search
   def search
     query_str = params[:q]
+    @subscriber = Subscriber.find(params[:id])
+    wines = @subscriber.packages.wines.search(query_str)
+    notes = @subscriber.packages.search(query_str).note
+    shipments = @subscriber.shipments.search(query_str)
 
-    render json: query_str
+    render json: { wines: wines, notes: notes, shipments: shipments }
   end
 
   # GET /vin/sub/:uid/delivery
