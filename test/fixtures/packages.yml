@@ -1,21 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  wine1_id: 1
-  wine2_id: 1
-  wine3_id: 1
-  wine4_id: 1
-  wine5_id: 1
-  wine6_id: 1
-  type: 
+  id: 1
   note: MyString
-
+  mix: AR
+  shipment_id: 1
 two:
-  wine1_id: 1
-  wine2_id: 1
-  wine3_id: 1
-  wine4_id: 1
-  wine5_id: 1
-  wine6_id: 1
-  type: 
-  note: MyString
+  id: 2
+  mix: AW
+  shipment_id: 2
+three:
+  id: 3
+  mix: RW
+  shipment_id: 3

@@ -1,5 +1,3 @@
-require "pry"
-
 class Vin::SubController < ApplicationController
 respond_to :json
   
@@ -24,8 +22,6 @@ respond_to :json
   # GET /vin/sub/:uid
   def show
     @subscriber = Subscriber.find(params[:id])
-
-    binding.pry
 
     render json: @subscriber
   end

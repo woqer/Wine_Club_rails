@@ -69,7 +69,7 @@ class VinClient
   # Use cases API
   ################  
   def post_sub options = {}
-    url = URI::join(@url, "subs")
+    url = URI::join(@url, "sub")
     read = options[:read]
     if read.nil?
       read_sub
@@ -80,7 +80,7 @@ class VinClient
   end
 
   def put_sub id, options = {}
-    url = URI::join(@url, "subs/", "#{id}")
+    url = URI::join(@url, "sub/", "#{id}")
     read = options[:read]
     if read.nil?
       read_sub
@@ -91,38 +91,38 @@ class VinClient
   end
 
   def get_sub id
-    url = URI::join(@url, "subs/", "#{id}")
+    url = URI::join(@url, "sub/", "#{id}")
     get_request url
   end
 
-  def get_wines id
-    url = URI::join(@url,"subs/#{id}/search?q=red")
+  def get_sub_wines_search id
+    url = URI::join(@url,"sub/#{id}/search?q=red")
     get_request url
   end
 
   def get_shipments uid
-    url = URI::join(@url,"subs/#{uid}/shipments")
+    url = URI::join(@url,"sub/#{uid}/shipments")
     get_request url
   end
 
   def get_shipment uid, sid
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}")
     get_request url
   end
 
   # REQUIREMENT REMOVED?!?!?!
   # def put_shipment uid, sid
-  #   url = URI::join(@url,"subs/#{uid}/shipments/#{sid}")
+  #   url = URI::join(@url,"sub/#{uid}/shipments/#{sid}")
   #   put_request url
   # end
 
   def get_shipment_notes uid, sid
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}/notes")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}/notes")
     get_request url
   end
 
   def post_shipment_notes uid, sid, options = {}
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}/notes")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}/notes")
     read = options[:read]
     if read.nil?
       read_note
@@ -133,12 +133,12 @@ class VinClient
   end
 
   def get_shipment_note uid, sid, nid
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}/notes/#{nid}")
     get_request url
   end
 
   def put_shipment_note uid, sid, nid, options = {}
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}/notes/#{nid}")
     read = options[:read]
     if read.nil?
       read_note
@@ -149,27 +149,27 @@ class VinClient
   end
 
   def delete_shipment_note uid, sid, nid
-    url = URI::join(@url,"subs/#{uid}/shipments/#{sid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/shipments/#{sid}/notes/#{nid}")
     delete_request url
   end
 
   def get_wines uid
-    url = URI::join(@url,"subs/#{uid}/wines")
+    url = URI::join(@url,"sub/#{uid}/wines")
     get_request url
   end
 
   def get_wine uid, wid
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}")
     get_request url
   end
 
   def get_wine_notes uid, wid
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/notes")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/notes")
     get_request url
   end
 
   def post_wine_notes uid, wid, options = {}
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/notes")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/notes")
     read = options[:read]
     if read.nil?
       read_note
@@ -180,12 +180,12 @@ class VinClient
   end
 
   def get_wine_note uid, wid, nid
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/notes/#{nid}")
     get_request url
   end
 
   def put_wine_note uid, wid, nid, options = {}
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/notes/#{nid}")
     read = options[:read]
     if read.nil?
       read_note
@@ -196,17 +196,17 @@ class VinClient
   end
 
   def delete_wine_note uid, wid, nid
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/notes/#{nid}")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/notes/#{nid}")
     delete_request url
   end
 
   def get_wine_rating uid, wid
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/rating")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/rating")
     get_request url
   end
 
   def post_wine_rating uid, wid, options = {}
-    url = URI::join(@url,"subs/#{uid}/wines/#{wid}/rating")
+    url = URI::join(@url,"sub/#{uid}/wines/#{wid}/rating")
     read = options[:read]
     if read.nil?
       read_rating
@@ -217,12 +217,12 @@ class VinClient
   end
 
   def get_user_delivery uid
-    url = URI::join(@url,"subs/#{uid}/delivery")
+    url = URI::join(@url,"sub/#{uid}/delivery")
     get_request url
   end
 
   def put_user_delivery uid, options = {}
-    url = URI::join(@url,"subs/#{uid}/delivery")
+    url = URI::join(@url,"sub/#{uid}/delivery")
     read = options[:read]
     if read.nil?
       # read some delivery example

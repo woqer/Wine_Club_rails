@@ -1,9 +1,73 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
+  id: 1
   wine_id: 1
-  package_id: 1
-
+  package_id: 2
 two:
+  id: 2
   wine_id: 1
+  package_id: 2
+three:
+  id: 3
+  wine_id: 1
+  package_id: 2
+four:
+  id: 4
+  wine_id: 1
+  package_id: 2
+five:
+  id: 5
+  wine_id: 1
+  package_id: 2
+six:
+  id: 6
+  wine_id: 1
+  package_id: 2
+seven:
+  id: 7
+  wine_id: 2
   package_id: 1
+eight:
+  id: 8
+  wine_id: 2
+  package_id: 1
+nine:
+  id: 9
+  wine_id: 2
+  package_id: 1
+ten:
+  id: 10
+  wine_id: 2
+  package_id: 1
+eleven:
+  id: 11
+  wine_id: 2
+  package_id: 1
+twelve:
+  id: 12
+  wine_id: 2
+  package_id: 1
+thirteen:
+  id: 13
+  wine_id: 2
+  package_id: 3
+fourteen:
+  id: 14
+  wine_id: 2
+  package_id: 3
+fifteen:
+  id: 15
+  wine_id: 2
+  package_id: 3
+sixteen:
+  id: 16
+  wine_id: 1
+  package_id: 3
+seventeen:
+  id: 17
+  wine_id: 1
+  package_id: 3
+eighteen:
+  id: 18
+  wine_id: 1
+  package_id: 3

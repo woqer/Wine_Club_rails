@@ -10,9 +10,9 @@ wines = JSON.parse(File.read(File.join(data_folder, "wines.json"))).flat_map { |
 note = JSON.parse(File.read(File.join(data_folder, "note.json"))).flat_map { |k,note| note }.first
 
 shipments = [
-  { status: "delivered", subscriber_id: 1 },
-  { status: "cancelled", subscriber_id: 1 },
-  { status: "scheduled", subscriber_id: 1 }
+  { status: "delivered", date: DateTime.new(2015, 3, 27), subscriber_id: 1 },
+  { status: "cancelled", date: DateTime.new(2015, 4, 17), subscriber_id: 1 },
+  { status: "scheduled", date: DateTime.new(2015, 6, 26), subscriber_id: 1 }
 ]
 
 packages = [

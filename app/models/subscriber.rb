@@ -23,7 +23,7 @@ class Subscriber < ActiveRecord::Base
   # ClassMethods
   def self.search(email)
     if email.blank?
-      find(:all)
+      self.all
     else
       by_email email
     end
@@ -32,7 +32,7 @@ class Subscriber < ActiveRecord::Base
   # Methods
   def email_formatter(email)
     email_ary = email.split("@")
-    email_ary[1].delete!(".+")
+    email_ary[0].delete!(".+")
     email_ary.join("@")
   end
 

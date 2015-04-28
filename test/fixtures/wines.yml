@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  type: 
+  id: 1
+  name: Marques de Caceres Verdejo
+  color: W
   rating: 1
-
 two:
-  name: MyString
-  type: 
+  id: 2
+  name: Vega Sicilia Unico
+  color: R
   rating: 1
