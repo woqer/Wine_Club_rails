@@ -13,26 +13,12 @@ class ShipmentTest < ActiveSupport::TestCase
 
   test "instance method selection month" do
     out = shipments(:one).selection_month
-    assert_not_nil(out[:id], "Not id present...")
-    assert_not_nil(out[:selection_month], "Not selection_month present...")
-    assert_not_nil(out[:status], "Not status present...")
-    assert_nil(out[:date], "Date present! should be formatted in selection_month")
+    assert_equal(out, "Mar/2015")
   end
 
   test "class method selection month" do
-    outs = Shipment.all.selection_month
-    assert_not_nil(outs[0][:id], "Not id present in 0")
-    assert_not_nil(outs[1][:id], "Not id present in 1")
-    assert_not_nil(outs[2][:id], "Not id present in 2")
-    assert_not_nil(outs[0][:selection_month], "Not selection_month present in 0...")
-    assert_not_nil(outs[1][:selection_month], "Not selection_month present in 1...")
-    assert_not_nil(outs[2][:selection_month], "Not selection_month present in 2...")
-    assert_not_nil(outs[0][:status], "Not status present in 0...")
-    assert_not_nil(outs[1][:status], "Not status present in 1...")
-    assert_not_nil(outs[2][:status], "Not status present in 2...")
-    assert_nil(outs[0][:date], "Date present! should be formatted in selection_month in 0")
-    assert_nil(outs[1][:date], "Date present! should be formatted in selection_month in 1")
-    assert_nil(outs[2][:date], "Date present! should be formatted in selection_month in 2")
+    out = Shipment.all.selection_month
+    assert_equal(out, ["Mar/2015", "Apr/2015", "Jun/2015"])
   end
 
   test "instance method show" do

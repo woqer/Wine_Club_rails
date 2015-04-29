@@ -10,7 +10,7 @@ respond_to :json
 
     notes = Shipment.for_subscriber(@subscriber).find(params[:shipment_id]).package.note
 
-    render_result({ notes: [notes.to_s] })
+    render_result({ id: params[:shipment_id], notes: [notes.to_s] })
 
     # render json: { notes: [notes.to_s] }
   end
@@ -33,32 +33,40 @@ respond_to :json
   # GET /vin/sub/:uid/shipments/:sid/notes/:nid
   # Waiting for teacher response on NoteId...
   def show
-    @note = Note.find(params[:id])
-    
-    render json: @shipment
+    shipment = Shipment.for_subscriber(Subscriber.find(params[:sub_id])).find(params[:id])
+    package = shipment.package
+    note = package.note
+    id = package.id
+    date = shipment.date.strftime("%d-%b-%Y")
+
+    render json: { notes: [{ id: id, date: date, content: note }] }
   end
 
   # PUT /vin/sub/:uid/shipments/:sid/notes/:nid
   # Waiting for teacher response on NoteId...
   def update
-    @note = Note.find(params[:id])
-
-    respond_to do |format|
-      if @note.update_attributes(params[:note])
-        render json: { errors: [] }
-      else
-        render json: @note.errors
-      end
+    shipment = Shipment.for_subscriber(Subscriber.find(params[:sub_id])).find(params[:id])
+    package = shipment.package
+    content = params[:content]
+    
+    if package.update_attributes(note: content)
+      render json: { errors: [] }
+    else
+      render json: package.errors
     end
   end
 
   # DELETE /vin/sub/:uid/shipments/:sid/notes/:nid
   # Waiting for teacher response on NoteId...
   def destroy
-    @note = Note.find(params[:id])
-    @note.destroy
-
-    head :no_content
+    shipment = Shipment.for_subscriber(Subscriber.find(params[:sub_id])).find(params[:id])
+    package = shipment.package
+    
+    if package.update_attributes(note: nil)
+      render json: { errors: [] }
+    else
+      render json: package.errors
+    end
   end
 
   private

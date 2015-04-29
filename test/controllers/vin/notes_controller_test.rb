@@ -13,17 +13,17 @@ class Vin::NotesControllerTest < ActionController::TestCase
   end
 
   test "notes show" do
-    get :show, id: 1
+    get :show, sub_id: 1, shipment_id: 1, id: 1
     assert_response :success
   end
 
   test "notes update" do
-    get :update, id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
+    get :update, sub_id: 1, shipment_id: 1, id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
     assert_response :success
   end
 
   test "notes destroy" do
-    get :destroy, id: 1
+    get :destroy, sub_id: 1, shipment_id: 1, id: 1
     assert_response :success
   end
 

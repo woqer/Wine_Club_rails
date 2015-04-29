@@ -48,12 +48,13 @@ class Shipment < ActiveRecord::Base
       { id: w.id, name: w.name }
     end
     sm = self.selection_month
-    sm.delete(:id)
-    sm.merge({
+    # sm.delete(:id)
+    {
+      selection_month: sm,
       date: self.date.strftime("%d-%b-%Y"),
       type: self.package.mix,
       wines: wines
-      })
+    }
   end
 
   # Overriding original renderin of model to json

@@ -44,4 +44,14 @@ class Vin::SubControllerTest < ActionController::TestCase
     assert_not_equal({ errors: [] }, msg)
   end
 
+  test "search method empty" do
+    get :search, id: 1, q: ""
+    assert_response :success
+  end
+
+  test "search method q=red" do
+    get :search, id: 1, q: "red"
+    assert_response :success
+  end
+
 end

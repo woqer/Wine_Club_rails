@@ -29,7 +29,8 @@ class Subscriber < ActiveRecord::Base
       self.all
     else
       # by_email query
-      where("name like ? email like ? phone like ?", query, query, query)
+      q = "%#{query}%"
+      where("name like ? OR email like ? OR phone like ?", q, q, q)
     end
   end
 
