@@ -8,7 +8,7 @@ class Vin::NotesControllerTest < ActionController::TestCase
   end
 
   test "notes create" do
-    post :create, sub_id: 1, shipment_id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
+    get :create, sub_id: 1, shipment_id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
     assert_response :success
   end
 
@@ -18,12 +18,12 @@ class Vin::NotesControllerTest < ActionController::TestCase
   end
 
   test "notes update" do
-    put :update, id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
+    get :update, id: 1, content: "Vega Sicilia Unico is one of the finest wines in the world!"
     assert_response :success
   end
 
   test "notes destroy" do
-    delete :destroy, id: 1
+    get :destroy, id: 1
     assert_response :success
   end
 

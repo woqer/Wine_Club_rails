@@ -45,11 +45,26 @@ respond_to :json
   def search
     query_str = params[:q]
     @subscriber = Subscriber.find(params[:id])
-    wines = @subscriber.packages.wines.search(query_str)
-    notes = @subscriber.packages.search(query_str).note
-    shipments = @subscriber.shipments.search(query_str)
+    
+    # search on shipment, package(note) and wine
+    shipments = @subscriber.shipments.search(query_str).uniq
+    packages = @subscriber.packages.search(query_str).uniq
+    wines = @subscriber.wines.search(query_str).uniq
 
-    render json: { wines: wines, notes: notes, shipments: shipments }
+    # get belonging models for merging results
+    packages_from_wines = wines.flat_map(&:packages).uniq
+    shipment_from_wines = wines.flat_map(&:shipments).uniq
+
+    # merging arrays
+    notes = packages.flat_map(&:note)
+    notes_from_wines = packages_from_wines.flat_map(&:note)
+    notes.push(notes_from_wines)
+    notes.flatten.uniq.compact!
+    shipments_a = shipments.flat_map.to_a
+    shipments_a.push(shipment_from_wines)
+    shipments_a.flatten.uniq.compact!
+
+    render json: { wines: wines, notes: notes, shipments: shipments_a }
   end
 
   # GET /vin/sub/:uid/delivery

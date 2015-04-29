@@ -7,13 +7,16 @@ class Wine < ActiveRecord::Base
   # Associations
   has_many :bottles
   has_many :packages, through: :bottles
+  has_many :shipments, through: :packages
+  has_many :subscribers, through: :shipments
 
   # Validations
   validates_uniqueness_of :name
-  validates :color, inclusion: { in: %w(R W) }
+  validates :color, inclusion: { in: %w(red white) }
 
   # Scopes
-  scope :for_packages, ->(package) { where(package: package) }
+  # scope :for_package, ->(package) { where(package: package) }
+  # scope :for_bottle, ->(bottle) { where(bottle: bottle) }
 
   # Class methods
   def self.search(query)

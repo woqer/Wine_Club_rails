@@ -8,6 +8,9 @@ class Subscriber < ActiveRecord::Base
   # Associations
   has_many :shipments
   has_many :packages, through: :shipments
+  has_many :bottles, through: :packages
+  has_many :wines, through: :bottles
+
   has_one :address
 
   # Validations
@@ -26,7 +29,7 @@ class Subscriber < ActiveRecord::Base
       self.all
     else
       # by_email query
-      where("name like ? email like ? phone like ?", query)
+      where("name like ? email like ? phone like ?", query, query, query)
     end
   end
 

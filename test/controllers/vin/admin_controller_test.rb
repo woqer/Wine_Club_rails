@@ -3,7 +3,7 @@ require 'test_helper'
 class Vin::AdminControllerTest < ActionController::TestCase
 
   test "admin create" do
-    post :create, name: "Fido Admin"
+    get :create, name: "Fido Admin"
     assert_response :success
   end
 
@@ -18,7 +18,7 @@ class Vin::AdminControllerTest < ActionController::TestCase
   end
 
   test "admin update" do
-    put :update, id: 1, name: "Fido Admin"
+    get :update, id: 1, name: "Fido Admin"
     assert_response :success
   end
 

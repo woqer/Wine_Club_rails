@@ -45,7 +45,7 @@ respond_to :json
   def index_subs
     subscriber = Subscriber.find(params[:sub_id])
 
-    @wines = subscriber.packages.flat_map(&:wine).uniq
+    @wines = subscriber.packages.flat_map(&:wines).uniq
 
     render json: @wines
   end

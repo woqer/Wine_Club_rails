@@ -17,7 +17,7 @@ class Vin::MonthlyControllerTest < ActionController::TestCase
   end
 
   test "monthly selection create" do
-    post :create, @sub_json
+    get :create, @sub_json
     assert_response :success
   end
 

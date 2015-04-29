@@ -5,22 +5,26 @@ class Package < ActiveRecord::Base
   # attr_accessible :type, :note
 
   # Associations
+  belongs_to :shipment
+  has_many :subscribers, through: :shipments
+
   has_many :bottles
   has_many :wines, through: :bottles
-  belongs_to :shipments
 
   # Validations
   validates :mix, inclusion: { in: %w(AR AW RW) }
 
   # Scopes
   # scope :uniq_wines, -> { select(:wines) }
+  scope :for_shipment, ->(shipment) { where(shipment: shipment) }
+  scope :for_wine, ->(wine) {where(wine: wine)}
 
   # Class methods
   # def self.uniq_wines
   #   @relation.flat_map { |p| p.uniq_wines }.uniq
   # end
 
-  def search(query)
+  def self.search(query)
     if query.blank?
       self.all
     else

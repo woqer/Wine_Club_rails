@@ -17,12 +17,12 @@ class Vin::SubControllerTest < ActionController::TestCase
   end
 
   test "should post create" do
-    post :create, @sub_json
+    get :create, @sub_json
     assert_response :success
   end
 
   test "should post create error (subscriber already registered)" do
-    post :create, read_sub("sub.json")
+    get :create, read_sub("sub.json")
     msg = JSON.parse(@response.body)
     assert_equal(["Subscriber already registered!"], msg["errors"], "Got: #{msg}")
   end
@@ -33,14 +33,14 @@ class Vin::SubControllerTest < ActionController::TestCase
   end
 
   test "should put update" do
-    put :update, @sub_json.merge({id: 1})
+    get :update, @sub_json.merge({id: 1})
     assert_response :success
   end
 
   test "should put update error" do
-    put :update, {id: 1, subscriber: {address: { state: "" }}}
+    get :update, {id: 1, subscriber: {address: { state: "" }}}
     msg = JSON.parse(@response.body)
-    puts "Mensage de error...#{msg}"
+    # puts "Mensage de error...#{msg}"
     assert_not_equal({ errors: [] }, msg)
   end
 

@@ -6,7 +6,10 @@ class Shipment < ActiveRecord::Base
 
   # Associations
   belongs_to :subscriber
+  
   has_one :package
+  has_many :bottles, through: :package
+  has_many :wines, through: :bottles
 
   # Validations
   # validates :status, format: { with: /\Adelivered\Z|\Acancelled\Z|\Ascheduled\Z/ }
@@ -25,22 +28,23 @@ class Shipment < ActiveRecord::Base
       self.all
     else
       q = "%#{query}%"
-      where("status like ? date like ?", q, q)
+      where("status like ?", q)
     end
   end
 
   # Methods
   def selection_month
-    selection_month = self.date.strftime("%b/%Y")
-    {
-      id: self.id,
-      selection_month: selection_month,
-      status: self.status
-    }
+    # selection_month = self.date.strftime("%b/%Y")
+    # {
+    #   id: self.id,
+    #   selection_month: selection_month,
+    #   status: self.status
+    # }
+    self.date.strftime("%b/%Y")
   end
 
   def show
-    wines = self.package.wine.uniq.flat_map do |w|
+    wines = self.package.wines.uniq.flat_map do |w|
       { id: w.id, name: w.name }
     end
     sm = self.selection_month
@@ -54,6 +58,7 @@ class Shipment < ActiveRecord::Base
 
   # Overriding original renderin of model to json
   def serializable_hash(options={})
-    super(options.merge({ except: [:updated_at, :created_at, :date, :subscriber_id] }))
+    super(options.merge({ except: [:updated_at, :created_at, :date, :subscriber_id],
+      methods: :selection_month }))
   end
 end
