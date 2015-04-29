@@ -43,6 +43,7 @@ group :test, :development do
   gem 'json'
   gem 'rest-client'
   gem 'simplecov'
+  gem 'simplecov-csv'
 end
 
 # For easy dumping and loading database, even for migrating to a different db backend 

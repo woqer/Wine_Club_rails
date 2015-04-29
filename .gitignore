@@ -16,7 +16,7 @@
 /tmp
 
 # Don't push config/secrets.yml to github...
-/config/secrets.yml*
+# /config/secrets.yml*
 
 # old DB backup...
 /db/data.yml
